@@ -16,6 +16,8 @@
   qqt A-q
   mo M-o   #|  kill Trakpad |#
   sd M-C-s #|    Shutdown   |#
+  ktf M-7 #| kill onboard keyboard |#
+  #|kto M-S-7 #| onboard keyboard on |#           
 
 #| PROGRAMS |#
   qu M-F1       #| qutebrowser |#
@@ -47,6 +49,7 @@
   ctx A-C-KeyRight
   kill A-C-x
   spll A-C-KeyLeft
+  mksp A-C-S-KeyLeft
   cfnd A-C-f
   dcl C-S-spc
   dps A-F10       #| dunst pause |#
@@ -81,7 +84,7 @@
  
 #| Tap Keys |#
   tlr (tap-hold 200 tab @fn)
-  eat (tap-hold 200 esc A-lmet)
+  eat (tap-hold 200 esc lalt)
   ttm (tap-hold 200 bspc @tm)
   die (tap-hold 200 @qt @qqt)
   ;;sly (tap-hold 200 @tmn @ent)
@@ -92,10 +95,13 @@
   mov (tap-hold 200 a lalt)
   stl (tap-hold 200 s lctl)
   efn (tap-hold 200 e @fn)
-  z (tap-hold 200 z A-S)
   x (tap-hold 200 x @sp)
   sly (tap-hold 200 spc @sp)
-  sht (tap-hold 200 @tmn lsft)
+  dhp (tap-hold 200 i @hist)
+  dtx (tap-hold 200 o @ctx)
+  mAn (tap-hold 200 m @man)
+  spel (tap-hold 200 y @spll)
+  msl (tap-hold 200 z @mksp)
   )
 
   #|-------------------------sourceLayer---------------------------------------- |#
@@ -111,11 +117,11 @@
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @die @s1  @s2  @s3  @s4     @s5  @s6  @ctm @fl  @tl  @al   -     =     @dmg
-  @ttm q    w    @efn  r      t    y    u    i    o   @pass  @nm   @sp   @mo
-  @eat @mov @stl d     @sch   g    h    j    k    l   ;      '     @ent
-  lsft @z   x    c     v      b    n    m    ,    .   /      @hyp
-  lmet @tmn lctl           @sly              @tlr @fn @spll  @hist @ctx
+  @die @ktf @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
+  @ttm q    w    @efn  r    t @spel   u  @dhp @dtx  @pass @nm @sp   @mo
+  @eat @mov @stl  d  @sch   g    h    j    k    l   ;  '    @ent
+  lsft @msl x    c    v    b    n   @mAn  ,    .    /    @hyp
+  lmet @tmn lctl           @sly            @tlr  @fn  @spll @hist @ctx
 )
 
   #|----------------------------numLayer----------------------------------------- |#
@@ -125,7 +131,7 @@
   tab  q    w    e    r    t    $    7    8    9    p    [    ]    \
   @tl  a    s    d    f    g    =    4    5    6    ;    '    ret
   lsft z    x    c    v    b    0    1    2    3    /    rsft
-  lmet lalt lctl           spc            @hyp rmet KeyLeft KeyDown KeyRight  
+  lmet lalt lctl           tab            @hyp rmet KeyLeft KeyDown KeyRight  
 )
 
   #|----------------------------enterLayer------------------------------------ |#
@@ -133,7 +139,7 @@
 (deflayer enterLayer
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @fl  q    w    \(   \)   t    y    +    -   \_    p    [    ]    \
-  @tl  a    s    [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
+  tab  a    s    [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
   lsft z    x    <    >    b    n   F1    ,    .    |    rsft
   lmet lalt lctl           ret            ralt rmet @dps KeyDown KeyRight  
 )
@@ -152,7 +158,7 @@
 
 (deflayer spaceLayer
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r   @fl   y   M-F7  i    o    p    [    ]    \
+  tab  q    w    e    r   @fl   y   M-F7 M-F9  o    p    [    ]    \
   caps a    s    d   @tl   g    h  @s4  @s5  @al    :    `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    /    rsft
   lmet lalt lctl           ret            ralt rmet KeyLeft KeyDown KeyRight  
@@ -167,4 +173,3 @@
   lsft z   @kill c    v    b    n   @man   ,    .    /    @hyp
   lctl lmet lalt           @dun            ralt rctl  @drsm KeyDown KeyRight
 )
-

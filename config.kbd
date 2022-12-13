@@ -20,13 +20,13 @@
   #|kto M-S-7 #| onboard keyboard on |#           
 
 #| PROGRAMS |#
-  qu M-F1       #| qutebrowser |#
-  LF M-F2       #|    LF       |#
-  ch M-F3       #|    Chrome   |#
-  sl M-F4       #|    Slack    |#
-  mg M-a        #| andmessages |#
-  rf M-KeyRight #| launcher    |#
-  tm M-ret      #|  terminal   |#
+  qu M-F1        #| qutebrowser |#
+  LF M-F2        #|    LF       |#
+  ch M-F3        #|    Chrome   |#
+  sl M-F4        #|    Slack    |#
+  mg M-a         #| andmessages |#
+  rf M-KeyRight  #| launcher    |#
+  tm M-ret       #|  terminal   |#
   sea M-spc      #|  launcher   |#
 
 #| Kitty |#
