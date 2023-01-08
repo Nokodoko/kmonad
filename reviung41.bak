@@ -1,7 +1,8 @@
-(defcfg #|input /dev/input/by-path/pci-0000:00:14.0-usb-0:3:1.0-event-kbd|#
-  input (device-file "/dev/input/by-id/usb-CX_2.4G_Wireless_Receiver-event-kbd")
+(defcfg
+  input (device-file "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd")
   output (uinput-sink "Onboard")
   )
+
 
 (defalias
 #| Layers |#
@@ -16,17 +17,16 @@
   qqt A-q
   mo M-o   #|  kill Trakpad |#
   sd M-C-s #|    Shutdown   |#
-  ktf M-7 #| kill onboard keyboard |#
   #|kto M-S-7 #| onboard keyboard on |#           
 
 #| PROGRAMS |#
-  qu M-F1       #| qutebrowser |#
-  LF M-F2       #|    LF       |#
-  ch M-F3       #|    Chrome   |#
-  sl M-F4       #|    Slack    |#
-  mg M-a        #| andmessages |#
-  rf M-KeyRight #| launcher    |#
-  tm M-ret      #|  terminal   |#
+  qu M-F1        #| qutebrowser |#
+  LF M-F2        #|    LF       |#
+  ch M-F3        #|    Chrome   |#
+  sl M-F4        #|    Slack    |#
+  mg M-a         #| andmessages |#
+  rf M-KeyRight  #| launcher    |#
+  tm M-ret       #|  terminal   |#
   sea M-spc      #|  launcher   |#
 
 #| Kitty |#
@@ -49,13 +49,11 @@
   ctx A-C-KeyRight
   kill A-C-x
   spll A-C-KeyLeft
-  mksp A-C-S-KeyLeft
   cfnd A-C-f
   dcl C-S-spc
   dps A-F10       #| dunst pause |#
   drsm A-S-C-F10  #|dunst resume |# 
   pss C-M-p
-  wifi M-S-w
 
 #| WORKSPACES |#
   s1  (tap-hold 200 A-1 C-A-1)
@@ -96,33 +94,38 @@
   mov (tap-hold 200 a lalt)
   stl (tap-hold 200 s lctl)
   efn (tap-hold 200 e @fn)
-  x (tap-hold 200 x @sp)
-  sly (tap-hold 200 spc @sp)
   dhp (tap-hold 200 i @hist)
   dtx (tap-hold 200 o @ctx)
-  mAn (tap-hold 200 m @man)
-  spel (tap-hold 200 y @spll)
-  msl (tap-hold 200 z @mksp)
-  wi (tap-hold 200 w @wifi)
+  z (tap-hold 200 z A-S)
+  x (tap-hold 200 x @sp)
+  sly (tap-hold 200 spc @sp)
   )
+
+#|
+  [_BASE] = LAYOUT_reviung41(
+    KC_BSPC,  KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
+    KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
+                                            KC_LALT,   KC_LGUI,  KC_SPC,   KC_TAB,   KC_RGUI
+  ),
+|#
 
   #|-------------------------sourceLayer---------------------------------------- |#
 
 (defsrc
-  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rctl  KeyLeft KeyDown KeyRight
+  bspc  q    w    e    r    t          y    u    i    o    p   del
+  esc   a    s    d    f    g          h    j    k    l    ;    '
+  lsft  z    x    c    v    b          n    m    ,    .    /    ret
+                lalt lmet       spc            tab rmet
 )
 
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @die @ktf @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
-  @ttm q   @wi   @efn  r    t @spel   u  @dhp @dtx  @pass @nm @sp   @mo
+  @die @s1 @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
+  @ttm q    w    @efn  r    t    y    u  @dhp  @dtx @pass @nm @sp   @mo
   @eat @mov @stl  d  @sch   g    h    j    k    l   ;  '    @ent
-  lsft @msl x    c    v    b    n   @mAn  ,    .    /    @hyp
+  lsft @z   x    c    v    b    n    m    ,    .    /    @hyp
   lmet @tmn lctl           @sly            @tlr  @fn  @spll @hist @ctx
 )
 
@@ -141,7 +144,7 @@
 (deflayer enterLayer
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @fl  q    w    \(   \)   t    y    +    -   \_    p    [    ]    \
-  tab  a    s    [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
+  @tl  a    s    [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
   lsft z    x    <    >    b    n   F1    ,    .    |    rsft
   lmet lalt lctl           ret            ralt rmet @dps KeyDown KeyRight  
 )
@@ -160,7 +163,7 @@
 
 (deflayer spaceLayer
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r   @fl   y   M-F7 M-F9  o    p    [    ]    \
+  tab  q    w    e    r   @fl   y   M-F7  i    o    p    [    ]    \
   caps a    s    d   @tl   g    h  @s4  @s5  @al    :    `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    /    rsft
   lmet lalt lctl           ret            ralt rmet KeyLeft KeyDown KeyRight  
@@ -175,3 +178,4 @@
   lsft z   @kill c    v    b    n   @man   ,    .    /    @hyp
   lctl lmet lalt           @dun            ralt rctl  @drsm KeyDown KeyRight
 )
+
