@@ -123,8 +123,8 @@
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @die q    w    @efn r    t           y    u    @dhp @dtx @pass @nm 
-  @ttm @mov @stl d    @sch g           h    j    k    l    ;     @enty
+  @ttm q    w    @efn r    t         y    u    @dhp @dtx @pass @nm 
+  @eat @mov @stl d    @sch g           h    j    k    l    ;     @enty
   lsft @z   x    c    v    b           n    m    ,    .    /    @hyp
             @tmn lctl           @sly        @tlr  @fn  
 )
@@ -132,7 +132,7 @@
   #|----------------------------numLayer----------------------------------------- |#
 
 (deflayer numLayer
-  @dmg   q    w    e    r    t          $    7    8    9    p    [
+  @die   q    w    e    r    t          $    7    8    9    p    [
   @mo    a    s    d    f    g          =    4    5    6    ;    '
   lsft   z    x    c    v    b          0    1    2    3    /    rsft
               lalt lctl         tab               @hyp rmet 
