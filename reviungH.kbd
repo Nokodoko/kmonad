@@ -1,5 +1,5 @@
 (defcfg
-  input (device-file "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd")
+  input (device-file "/dev/input/by-path/pci-0000:00:14.0-usb-0:3.3.1:1.0-event-kbd")
   output (uinput-sink "Onboard")
   )
 
