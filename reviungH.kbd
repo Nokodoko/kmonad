@@ -89,7 +89,7 @@
   die (tap-hold 200 @qt @qqt)
   ;;sly (tap-hold 200 @tmn @ent)
   dun (tap-hold 200 @dps @drsm)
-  dmg (tap-hold 200 d @dcl)
+  dmg (tap-hold 200 x @dcl)
   sch (tap-hold 200 f @sea)
   pass (tap-hold 200 p @pss)
   mov (tap-hold 200 a lalt)
@@ -125,8 +125,8 @@
 
 (deflayer base
   @ttm q    w    @efn r    t           y    u    @dhp @dtx @pass @nm 
-  @eat @mov @stl @dmg @sch g           h    j    k    l    ;     @enty
-  lsft @z   x    c    v    b           n    m    ,    .    /    @hyp
+  @eat @mov @stl d    @sch g           h    j    k    l    ;     @enty
+  lsft @z  @dmg  c    v    b           n    m    ,    .    /    @hyp
             lmet lctl           @sly        @tlr  @fn  
 )
 
