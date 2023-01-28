@@ -3,7 +3,6 @@
   output (uinput-sink "Onboard")
   )
 
-
 (defalias
 #| Layers |#
   sp  (layer-toggle spaceLayer)
@@ -124,19 +123,19 @@
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @ttm q    w    @efn r    t           y    u    @dhp @dtx @pass @nm 
-  @eat @mov @stl d    @sch g           h    j    k    l    ;     @enty
-  lsft @z  @dmg  c    v    b           n    m    ,    .    /    @hyp
+  @ttm q    w    @efn r    t           y    u    i    @dtx  p    @nm 
+  @eat @mov @stl d    f    g           h    j    k    l    ;     @enty
+  lsft z    x    c    v    b           n    m    ,    .    /    @hyp
             lmet lctl           @sly        @tlr  @fn  
 )
 
   #|----------------------------numLayer----------------------------------------- |#
 
 (deflayer numLayer
-  @die  @ktf  w    e    r    t          $    7    8    9    p    [
-  @mo    a    s    d    f    g          =    4    5    6    ;    '
-  lsft   z    x    c    v    b          0    1    2    3    /    rsft
-              lalt lctl         tab               @hyp rmet 
+  @die  @ktf  w    e   @hist t          $    7    8    9   @pss  [
+  @mo    a    s    d   @sea  ~          =    4    5    6    ;    '
+  lsft   z   @dcl @ctx  v    b          0    1    2    3    /    rsft
+              lalt lctl        @dun          @drsm rmet 
 )
 
   #|----------------------------enterLayer------------------------------------ |#
@@ -172,5 +171,5 @@
   tab  q    w     e    r    t              y    u    i    o   @ptok [
   caps @aws @stok d   @cfnd g              h    j   @5    l    ;    '
   lsft z    @kill c    v    b              n   @man   ,    .   /    @hyp
-            lmet lalt           @dun            ralt  @drsm 
+            lmet lalt           ret            ralt  @drsm 
 )
