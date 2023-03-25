@@ -1,5 +1,5 @@
 (defcfg
-  input (device-file "/dev/input/by-path/pci-0000:00:14.0-usb-0:3.3.1:1.0-event-kbd")
+  input (device-file "/dev/input/by-path/pci-0000:00:14.0-usb-0:3.3.2:1.0-event-kbd")
   output (uinput-sink "Onboard")
   )
 
@@ -45,8 +45,10 @@
   aws  A-C-a
   ptok A-C-p
   stok A-C-s
+  wall A-C-w
   hist A-C-KeyDown
   man A-C-m
+  pic A-C-c
   ctx A-C-KeyRight
   kill A-C-x
   spll A-C-KeyLeft
@@ -124,7 +126,7 @@
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @ttm q    w    @efn r    t           y    u    i    @dtx  p    @nm 
+  @ttm q    w    @efn r    t           y    u    i    o     p    @nm 
   @eat @mov @stl d    f    g           h    j    k    l    ;     @enty
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
             lmet lctl           @sly        @tlr  @fn  
@@ -133,7 +135,7 @@
   #|----------------------------numLayer----------------------------------------- |#
 
 (deflayer numLayer
-  @die  @ktf  w    e   @hist t          $    7    8    9   @pss  [
+  @die  @ktf  w   @cl  @hist t          $    7    8    9   @pss  [
   @mo    a    s    d   @sea  ~          =    4    5    6    ;    '
   lsft   z   @dcl @ctx  v    b          0    1    2    3    /    rsft
               lalt lctl        @dun          @drsm rmet 
@@ -169,8 +171,8 @@
   #|-------------------------hypLayer---------------------------------------- |#
 
 (deflayer hypLayer
-  tab  q    w     e    r    t              y    u    i    o   @ptok [
+  tab  q   @wall  e    r    t              y    u    i    o   @ptok [
   caps @aws @stok d   @cfnd g              h    j   @5    l    ;    '
-  lsft z    @kill c    v    b              n   @man   ,    .   /    @hyp
+  lsft z    @kill @pic v    b              n   @man   ,    .   /    @hyp
             lmet lalt           ret            ralt  @drsm 
 )

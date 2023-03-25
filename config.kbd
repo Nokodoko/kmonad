@@ -47,6 +47,8 @@
   hist A-C-KeyDown
   man A-C-m
   ctx A-C-KeyRight
+  pic A-C-c
+  wall A-C-w
   kill A-C-x
   spll A-C-KeyLeft
   cfnd A-C-f
@@ -165,9 +167,9 @@
 
 (deflayer hypLayer
   grv  1    2    3    4    5    6    7    8    9    0    -    =    @cl
-  tab  q    w    e    r    t    y    u    i    o   @ptok [    ]    \
+  tab  q   @wall e    r    t    y    u    i    o   @ptok [    ]    \
   caps @aws @stok d  @cfnd g    h    j   @5    l    ;    '    ret
-  lsft z   @kill c    v    b    n   @man   ,    .    /    @hyp
+  lsft z   @kill @pic v    b    n   @man   ,    .    /    @hyp
   lctl lmet lalt           @dun            ralt rctl  @drsm KeyDown KeyRight
 )
 
