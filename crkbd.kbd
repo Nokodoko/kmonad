@@ -1,0 +1,179 @@
+
+(defcfg
+  input (device-file "/dev/input/by-id/usb-foostan_Corne-event-kbd")
+  output (uinput-sink "Onboard")
+  )
+
+(defalias
+#| Layers |#
+ sp  (layer-toggle spaceLayer)
+ nm  (layer-toggle numLayer)
+ fn  (layer-toggle functionLayer)
+ ent (layer-toggle enterLayer)
+ hyp (layer-toggle hypLayer)
+
+#| ACTIONS |#
+  qt C-q
+  qqt A-q
+  mo M-o   #|  kill Trakpad |#
+  sd M-C-s #|    Shutdown   |#
+  ktf M-7 #| kill onboard keyboard |#
+  #|kto M-S-7 #| onboard keyboard on |#
+  bku C-A-u
+  bkd C-A-i
+
+#| PROGRAMS |#
+  qu M-F1        #| qutebrowser |#
+  LF M-F2        #|    LF       |#
+  ch M-F3        #|    Chrome   |#
+  sl M-F4        #|    Slack    |#
+  mg M-a         #| andmessages |#
+  rf M-KeyRight  #| launcher    |#
+  tm M-ret       #|  terminal   |#
+  sea M-spc      #|  launcher   |#
+
+#| Kitty |#
+  cs C-S
+  tmn C-S-ret
+
+
+#| VIMEMULATION |#
+  lf  KeyLeft KeyDown KeyRight
+  rg  KeyRight
+  dw  KeyDown
+  up  KeyUp
+
+#| Scripts |#
+  aws  A-C-a
+  ptok A-C-p
+  stok A-C-s
+  pic A-C-c
+  wall A-C-w
+  hist A-C-KeyDown
+  man A-C-m
+  ctx A-C-KeyRight
+  kill A-C-x
+  spll A-C-KeyLeft
+  cfnd A-C-f
+  dcl C-S-spc
+  dps A-F10       #| dunst pause |#
+  drsm A-S-C-F10  #|dunst resume |#
+  pss C-M-p
+  db A-C-d
+
+#| WORKSPACES |#
+  s1  (tap-hold 300 A-1 C-A-1)
+  s2  (tap-hold 300 A-2 C-A-2)
+  s3  (tap-hold 300 A-3 C-A-3)
+  s4  (tap-hold 300 A-4 C-A-4)
+  s5  (tap-hold 300 A-5 C-A-5)
+  s6  (tap-hold 300 A-6 C-A-6)
+  al  (tap-hold 300 A-0 C-A-0)
+
+#| move tags |#
+  5 A-S-5
+
+#| Monitors |#
+  m1 M-F7
+  m2 M-F8
+
+ #| LAYOUTS |#
+ tl  A-S-t    #|       tiled     |#
+ ct  A-c    #|     centered    |#
+ ctm A-S-c  #|  center master  |#
+ fl  A-S-f  #|    fullscreen   |#
+ cl  A-S-e  #|    close xorg   |#
+
+
+#| Tap Keys |#
+  ;;tlr (tap-hold 300 tab @fn)
+  eat (tap-hold 300 esc lalt)
+  ttm (tap-hold 300 bspc @tm)
+  die (tap-hold 300 @qt @qqt)
+  ;;sly (tap-hold 300 @tmn @ent)
+  dun (tap-hold 300 @dps @drsm)
+  dmg (tap-hold 300 C-spc @dcl)
+  sch (tap-hold 300 f @sea)
+  pass (tap-hold 300 p @pss)
+  mov (tap-hold 300 a lalt)
+  stl (tap-hold 300 s lctl)
+  efn (tap-hold 300 e @fn)
+  dhp (tap-hold 300 i @hist)
+  dtx (tap-hold 300 o @ctx)
+  z (tap-hold 300 z A-S)
+  x (tap-hold 300 x @sp)
+  sly (tap-hold 300 spc @sp)
+  enty (tap-hold 300 ' @ent)
+  )
+
+#|
+  [_BASE] = LAYOUT_reviung41(
+    KC_BSPC,  KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
+    KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
+                                  KC_LALT,   KC_LGUI, KC_LCTRL,            KC_SPC,   KC_TAB,   KC_RGUI
+  ),
+|#
+
+  #|-------------------------sourceLayer---------------------------------------- |#
+
+(defsrc
+  bspc  q    w    e    r    t          y    u    i    o    p   \
+  esc   a    s    d    f    g          h    j    k    l    ;    '
+  lsft  z    x    c    v    b          n    m    ,    .    /    rsft
+                lalt lctl   lmet       spc  tab rmet
+)
+
+  #|----------------------------base------------------------------------------- |#
+
+(deflayer base
+  @ttm q    w   @efn  r    t           y    u    i    o     p   @nm
+  esc  @mov @stl d    f    g           h    j    k    l    ;     @enty
+  lsft z    x    c    v    b           n    m    ,    .    /    @hyp
+             lalt lctl  lmet           @sly tab  rmet
+)
+
+  #|----------------------------numLayer----------------------------------------|#
+
+(deflayer numLayer
+  @die  @ktf  w   @cl  @hist t          $    7    8    9   @pss  \
+  @mo    a    s    d   @sea  ~          =    4    5    6    ;    '
+  lsft   z   @dmg @ctx  v    b          0    1    2    3    /    rsft
+                 lalt lctl spc          tab @drsm rmet
+)
+
+  #|----------------------------enterLayer------------------------------------ |#
+
+(deflayer enterLayer
+  @fl    q    w   \(   \)   t              y   +    -   \_    p    \
+  @tl    a    s    [    ]   ~              @lf @dw  @up  @rg  `    '
+  lsft   z    x    <    >   b              n   F1    ,    .    |    rsft
+                lalt lctl spc              ret ralt @dps
+)
+
+  #|----------------------------functionLayer----------------------------------- |#
+
+(deflayer functionLayer
+  bspc q    w    e    r    t               F11  F7   F8   F9   p    \
+  esc  a    s    d    f    g               F10  F4   F5   F6   ;    '
+  lsft z    x    c    v    b               F12  F1   F2   F3   \    @sp
+               lalt lctl spc               ret ralt ralt
+)
+
+  #|----------------------------spaceLayer-------------------------------------- |#
+
+(deflayer spaceLayer
+  tab  q    w    e     r   @tl              y   M-F7  i    o    p    \
+  caps a    s    d     @fl g                h   @s4   @s5  @al  :    `
+  lsft z    x    @ctm  v   b                @al @s1   @s2  @s3  \    rsft
+               lalt lctl spc                ret ralt rmet
+)
+
+  #|-------------------------hypLayer---------------------------------------- |#
+
+(deflayer hypLayer
+  @dmg  q   @wall  e  @drsm  t              y   @bku @bkd  d   @ptok \
+  caps @aws @stok @db @cfnd g              h    j   @5    l    ;    '
+  lsft z    @kill @pic v    b              n   @man   ,    .   /    @hyp
+                @drsm @dps @ctx              @hist @dps  @ctx
+)
