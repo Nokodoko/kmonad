@@ -100,6 +100,12 @@
   pass (tap-hold 200 p @pss)
   mov (tap-hold 200 a lalt)
   stl (tap-hold 200 s lctl)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  jft (tap-hold 200 j lctl)
+  fft (tap-hold 200 f lctl)
+  lat (tap-hold 200 l lctl)
+  dmt (tap-hold 200 d lctl)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   efn (tap-hold 200 e @fn)
   dhp (tap-hold 200 i @hist)
   dtx (tap-hold 200 o @ctx)
