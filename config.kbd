@@ -61,6 +61,7 @@
   dps A-F10       #| dunst pause |#
   drsm A-S-C-F10  #|dunst resume |# 
   pss C-M-p
+  upd C-M-u
 
 #| WORKSPACES |#
   s1  (tap-hold 200 A-1 C-A-1)
@@ -101,10 +102,12 @@
   mov (tap-hold 200 a lalt)
   stl (tap-hold 200 s lctl)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  jft (tap-hold 200 j lctl)
-  fft (tap-hold 200 f lctl)
-  lat (tap-hold 200 l lctl)
-  dmt (tap-hold 200 d lctl)
+  ktl (tap-hold 200 k lctl)
+  jft (tap-hold 200 j lsft)
+  fft (tap-hold 200 f lsft)
+  lat (tap-hold 200 l lalt)
+  dmt (tap-hold 200 d lmet)
+  smt (tap-hold 200 ' lmet)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   efn (tap-hold 200 e @fn)
   dhp (tap-hold 200 i @hist)
@@ -112,6 +115,7 @@
   z (tap-hold 200 z A-S)
   x (tap-hold 200 x @sp)
   sly (tap-hold 200 spc @sp)
+  sent (tap-hold 200 ; @ent)
   )
 
   #|-------------------------sourceLayer---------------------------------------- |#
@@ -129,9 +133,9 @@
 
 (deflayer base
   @die F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
-  ~ @s1 @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
+  ~ @upd @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
   @ttm q    w    @efn  r    t    y    u    i    o   p     @nm @sp   @mo
-  @eat @mov @stl  d   f     g    h    j    k    l   ;  '    @ent
+  @eat @mov @stl @dmt @fft  g    h   @jft @ktl @lat @sent @smt @ent
   lsft  z   x    c    v    b    n    m    ,    .    /    @hyp
   lmet @tmn lctl           @sly            @tlr  @fn  @spll @hist @ctx
 )
@@ -141,8 +145,8 @@
 (deflayer numLayer
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    $    7    8    9   @pss [    ]    \
-  @tl  a    s    d   @sea  g    =    4    5    6    ;    '    ret
+  tab  q    w   @die  r    t    $    7    8    9   @pss [    ]    \
+  @tl bspc lctl esc  @sea  g    =    4    5    6    ;    '    ret
   lsft z   @dmg @ctx  v    b    0    1    2    3    /    rsft
   lmet lalt lctl           tab            @hyp rmet KeyLeft KeyDown KeyRight  
 )
@@ -153,9 +157,9 @@
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @fl  q    w    \(   \)   t    y    +    -   \_    p    [    ]    \
-  @tl  a    s    [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
+  @tl bspc @die  [    ]    ~    @lf  @dw  @up  @rg  `    '    @ent
   lsft z    x    <    >    b    n   F1    ,    .    |    rsft
-  lmet lalt lctl           ret            ralt rmet @dps KeyDown KeyRight  
+  lmet lalt lctl           tab            ralt rmet @dps KeyDown KeyRight  
 )
 
   #|----------------------------functionLayer----------------------------------- |#
@@ -175,7 +179,7 @@
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r   @tl   y   M-F7  i    o    p    [    ]    \
-  caps a    s    d   @fl   g    h  @s4  @s5  @al    :    `    ret
+  caps a   lsft esc  @fl   g    h  @s4  @s5  @al   ret   `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    \    rsft
   lmet lalt lctl           ret            ralt rmet KeyLeft KeyDown KeyRight  
 )

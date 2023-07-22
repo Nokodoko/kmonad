@@ -97,6 +97,14 @@
   pass (tap-hold 300 p @pss)
   mov (tap-hold 300 a lalt)
   stl (tap-hold 300 s lctl)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ktl (tap-hold 200 k lctl)
+  jft (tap-hold 200 j lsft)
+  fft (tap-hold 200 f lsft)
+  lat (tap-hold 200 l lalt)
+  dmt (tap-hold 200 d lmet)
+  smt (tap-hold 200 ' lmet)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   efn (tap-hold 300 e @fn)
   dhp (tap-hold 300 i @hist)
   dtx (tap-hold 300 o @ctx)
@@ -128,7 +136,7 @@
 
 (deflayer base
   @ttm q    w   @efn  r    t           y    u    i    o     p   @nm
-  esc  @mov @stl d    f    g           h    j    k    l    ;     @enty
+  esc  @mov @stl @dmt @fft g           h    @jft @ktl @lat  ;   @enty
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
              lalt lctl  lmet           @sly tab  rmet
 )
