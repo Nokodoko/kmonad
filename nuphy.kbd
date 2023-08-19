@@ -97,6 +97,14 @@
   pass (tap-hold 200 p @pss)
   mov (tap-hold 200 a lalt)
   stl (tap-hold 200 s lctl)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ktl (tap-hold 200 k lctl)
+  jft (tap-hold 200 j lsft)
+  fft (tap-hold 200 f lsft)
+  lat (tap-hold 200 l lalt)
+  dmt (tap-hold 200 d lmet)
+  smt (tap-hold 200 ' lmet)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   efn (tap-hold 200 e @fn)
   dhp (tap-hold 200 i @hist)
   dtx (tap-hold 200 o @ctx)
@@ -122,7 +130,7 @@
   @die F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   ~ @s1 @s2  @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
   @ttm q    w    @efn  r    t    y    u    i    o   p     @nm @sp   @mo
-  @eat @mov @stl  d   f     g    h    j    k    l   ;  '    @ent
+  @eat @mov @stl @dmt @fft  g    h   @jft @ktl @lat @sent @smt @ent
   lsft  z   x    c    v    b    n    m    ,    .    /    @hyp
   lmet @tmn lctl           @sly            @tlr  @fn  @spll @hist @ctx
 )
@@ -168,7 +176,7 @@
   tab  q    w    e    r   @tl   y   M-F7  i    o    p    [    ]    \
   caps a    s    d   @fl   g    h  @s4  @s5  @al    :    `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    \    rsft
-  lmet lalt lctl           ret            ralt rmet KeyLeft KeyDown KeyRight  
+  lmet lalt @tmnt           ret            ralt rmet KeyLeft KeyDown KeyRight  
 )
 
   #|-------------------------hypLayer---------------------------------------- |#
