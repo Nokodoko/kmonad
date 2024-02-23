@@ -10,12 +10,14 @@
   fn  (layer-toggle functionLayer)
   ent (layer-toggle enterLayer)
   hyp (layer-toggle hypLayer)
+  hyp2 (layer-toggle hypLayer2)
 
 #| ACTIONS |#
   qt C-q
   qqt A-q
   mo M-o   #|  kill Trakpad |#
   sd M-C-s #|    Shutdown   |#
+  sus M-C-S #|    Suspend   |#
   ktf M-7 #| kill onboard keyboard |#
   #|kto M-S-7 #| onboard keyboard on |#
   bku C-A-u
@@ -98,12 +100,21 @@
   pass (tap-hold 300 p @pss)
   mov (tap-hold 300 a lalt)
   stl (tap-hold 300 s lctl)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ktl (tap-hold 200 k lctl)
+  jft (tap-hold 200 j lsft)
+  fft (tap-hold 200 f lsft)
+  lat (tap-hold 200 l lalt)
+  dmt (tap-hold 200 d lmet)
+  shyp (tap-hold 200 ' @hyp2)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   efn (tap-hold 300 e @fn)
   dhp (tap-hold 300 i @hist)
   dtx (tap-hold 300 o @ctx)
   z (tap-hold 300 z A-S)
   x (tap-hold 300 x @sp)
   sly (tap-hold 300 spc @sp)
+  sent (tap-hold 200 ; @ent)
   enty (tap-hold 300 ' @ent)
   )
 
@@ -128,10 +139,10 @@
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @ttm q    w    @efn r    t           y    u    i    o     p    @nm
-  esc  @mov @stl d    f    g           h    j    k    l    ;     @enty
+  @ttm q    w    @efn r    t           y    u    i    o    p     @nm
+  @eat @mov @stl @dmt @fft  g          h    @jft @ktl @lat @sent @shyp
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
-            lmet lctl           @sly        @tlr  @fn
+            lmet lctl           @sly        |   @fn
 )
 
   #|----------------------------numLayer----------------------------------------- |#
@@ -147,7 +158,7 @@
 
 (deflayer enterLayer
   @fl    q    w   \(   \)   t              y   +    -   \_    p    [
-  @tl    a    s    [    ]   ~              @lf @dw  @up  @rg  `    '
+  @tl    bspc lctl    [    ]   ~              @lf @dw  @up  @rg  `    '
   lsft   z    x    <    >   b              n   F1    ,    .    |    rsft
             lalt   lctl         ret            ralt @dps
 )
@@ -164,8 +175,8 @@
   #|----------------------------spaceLayer-------------------------------------- |#
 
 (deflayer spaceLayer
-  tab  q    w    e     r   @fl              y   M-F7  i    o    p    [
-  caps a    s    d     @tl g                h   @s4   @s5  @al  :    `
+  @sus  q    w    e     r   @fl              y   M-F7  i    o    p    [
+  caps @die    s    d     @tl g                h   @s4   @s5  tab  ret    `
   lsft z    x    @ctm  v   b                n   @s1   @s2  @s3  \    rsft
             lalt lctl           ret              ralt rmet
 )
@@ -173,8 +184,16 @@
   #|-------------------------hypLayer---------------------------------------- |#
 
 (deflayer hypLayer
-  tab  q   @wall  e    r    t              y   @bku @bkd  d   @ptok [
-  caps @aws @stok @db @cfnd g              h    j   @5    l    ;    '
+  @dmg  q   @wall  e    r    t             y   @bku  @bkd  d   @ptok [
+  caps @aws @stok @db @cfnd g              h   @hist @ctx  l    ;    '
   lsft z    @kill @pic v    b              n   @man   ,    .   /    @hyp
             lmet lalt           ret            ralt  @drsm
+)
+
+  #|-------------------------hypLayer2---------------------------------------- |#
+(deflayer hypLayer2
+  bspc  q    w    e    r    t          y    u    i    o    p   del
+  esc   a    s    d    f    g          h    j    k    l    `    '
+  lsft  z    x    c    v    b          n    m    ,    .    /    ret
+                lalt lmet       spc         tab rmet
 )

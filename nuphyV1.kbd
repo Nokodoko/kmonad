@@ -1,5 +1,5 @@
 (defcfg
-  input (device-file "/dev/input/by-path/platform-39b10c000.spi-cs-0-event-kbd")
+  input (device-file "/dev/input/by-id/usb-CX_2.4G_Wireless_Receiver-event-kbd")
   output (uinput-sink "Onboard")
   )
 
@@ -14,21 +14,29 @@
 #| ACTIONS |#
   qt C-q
   qqt A-q
-  mo M-o   #|  kill Trakpad |#
-  sd M-C-s #|    Shutdown   |#
-  #|kto M-S-7 #| onboard keyboard on |#           
+  mo M-o       #|  kill Trakpad |#
+  sd M-C-s     #|    Shutdown   |#
+  sspend M-C-S #|    Suspend   |#
+  kto M-S-7      #| onboard keyboard switch |#           
   bku C-A-u
   bkd C-A-i
 
 
+#| NETWORKS |#
+f1 C-M-1 #| speed |#
+f2 C-M-2 #| move  |#
+f3 C-M-3 #| mifi  |#
+f4 C-M-4 #| other |#
+
+
 #| PROGRAMS |#
-  qu M-F1       #| qutebrowser |#
-  LF M-F2       #|    LF       |#
-  ch M-F3       #|    Chrome   |#
-  sl M-F4       #|    Slack    |#
-  mg M-a        #| andmessages |#
-  rf M-KeyRight #| launcher    |#
-  tm M-ret      #|  terminal   |#
+  qu M-F1        #| qutebrowser |#
+  LF M-F2        #|    LF       |#
+  ch M-F3        #|    Chrome   |#
+  sl M-F4        #|    Slack    |#
+  mg M-a         #| andmessages |#
+  rf M-KeyRight  #| launcher    |#
+  tm M-ret       #|  terminal   |#
   sea M-spc      #|  launcher   |#
 
 #| Kitty |#
@@ -64,6 +72,7 @@
   pss C-M-p
   upd C-M-u
   xm5 C-M-i
+  drs C-M-y
 
 #| WORKSPACES |#
   s1  (tap-hold 200 A-1 C-A-1)
@@ -84,9 +93,9 @@
  #| LAYOUTS |#
  tl  A-S-t    #|       tiled     |#
  ct  A-S-c    #|     centered    |#
- ctm A-S-c  #|  center master  |#
- fl  A-S-f  #|    fullscreen   |#
- cl  A-S-e  #|    close xorg   |#
+ ctm A-S-c    #|  center master  |#
+ fl  A-S-f    #|    fullscreen   |#
+ cl  A-S-e    #|    close xorg   |#
 
 
 
@@ -96,6 +105,7 @@
   eat (tap-hold 200 esc lalt)
   ttm (tap-hold 200 bspc @tm)
   die (tap-hold 200 @qt @qqt)
+  sus (tap-hold 200 @sspend @sd)
   ;;sly (tap-hold 200 @tmn @ent)
   dun (tap-hold 200 @dps @drsm)
   dmg (tap-hold 200 C-spc @dcl)
@@ -126,21 +136,21 @@
 (defsrc
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   `   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rctl  KeyLeft KeyDown KeyRight
+  tab  q    w    e    r    t    y    u   i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j   k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m   ,    .    /    rsft
+  lctl lmet lalt           spc            ralt ralt  KeyLeft KeyDown KeyRight
 )
 
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @die F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
-  ~ @upd @xm5 @s3  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
+  + @f1 @f2  @f3  @f4   F5   F6   F7   F8   F9  F10  F11  F12 
+  ~ @upd @xm5 @drs  @s4  @s5  @s6  @ctm @fl  @tl  @al   -   =  @dmg
   @ttm q    w    @efn  r    t    y    u    i    o   p     @nm @sp   @mo
   @eat @mov @stl @dmt @fft  g    h   @jft @ktl @lat @sent @smt @ent
   lsft  z   x    c    v    b    n    m    ,    .    /    @hyp
-  lmet @tmn lctl           @sly            @tlr  @fn  @spll @hist @ctx
+  lmet @tmn lctl           @sly           |  @fn  @spll @hist @ctx
 )
 
   #|----------------------------numLayer----------------------------------------- |#
@@ -155,6 +165,7 @@
 )
 
   #|----------------------------enterLayer------------------------------------ |#
+
 
 (deflayer enterLayer
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
@@ -179,12 +190,12 @@
   #|----------------------------spaceLayer-------------------------------------- |#
 
 (deflayer spaceLayer
-  esc F1  F2   F3   F4     F5   F6   F7   F8   F9  F10  F11  F12 
-  grv  1    2    3    4     5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    @tl   y   M-F7  i    o    p    [    ]    \
-  caps @die lsft esc  @ssft  g    h  @s4  @s5  @al   ret   `    ret
-  lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    \    rsft
-  lmet @tmnt lctl           ret            ralt rmet KeyLeft KeyDown KeyRight  
+  @sus F1  F2   F3   F4     F5   F6   F7   F8   F9  F10  F11  F12 
+  grv @bkd @bku  @drs 4     5    6    7    8    9    0    -    =    @kto
+  tab  q    w    e    r    @tl   y   M-F7  i    o   @al   [    ]    \
+  caps @die lsft esc  @ssft  g    h  @s4  @s5  tab   ret   `    ret
+  lsft z    x   @ctm  v    b    n  @s1  @s2  @s3     \     rsft
+  lmet @tmnt lctl           ret            ralt rmet KeyLeft KeyDown @xm5
 )
 
   #|-------------------------hypLayer---------------------------------------- |#

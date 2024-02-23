@@ -1,7 +1,8 @@
 (defcfg
-  input (device-file "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Air60_V2_Dongle-event-kbd")
+  input (device-file "/dev/input/by-id/usb-NuPhy_NuPhy_Air60_V2-if02-event-kbd")
   output (uinput-sink "Onboard")
   )
+
 
 (defalias
 #| Layers |#
@@ -17,7 +18,7 @@
   mo M-o       #|  kill Trakpad       |#
   sd M-C-s     #|    Shutdown         |#
   sspend M-C-S #|    Suspend          |#
-  kto M-7    #| onboard keyboard on |#           
+  kto M-S-7    #| onboard keyboard on |#           
   bku C-A-u
   bkd C-A-i
 
@@ -26,7 +27,6 @@ f1 C-M-1 #| speed |#
 f2 C-M-2 #| move  |#
 f3 C-M-3 #| mifi  |#
 f4 C-M-4 #| other |#
-
 
 #| PROGRAMS |#
   qu M-F1       #| qutebrowser |#
@@ -186,7 +186,7 @@ f4 C-M-4 #| other |#
 
 (deflayer spaceLayer
   @sus F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
-  @sus @upd @xm5 @drs    4    5    6    7    8    9    0    -    =    @kto
+  @sus @bkd @bku @drs    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r   @tl   y   M-F7  i    o   @al   [    ]    \
   caps @die lsft esc  @ssft  g    h  @s4  @s5  tab   ret   `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    \    rsft

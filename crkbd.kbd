@@ -62,13 +62,13 @@
   db A-C-d
 
 #| WORKSPACES |#
-  s1  (tap-hold 300 A-1 C-A-1)
-  s2  (tap-hold 300 A-2 C-A-2)
-  s3  (tap-hold 300 A-3 C-A-3)
-  s4  (tap-hold 300 A-4 C-A-4)
-  s5  (tap-hold 300 A-5 C-A-5)
-  s6  (tap-hold 300 A-6 C-A-6)
-  al  (tap-hold 300 A-0 C-A-0)
+  s1  (tap-hold 200 A-1 C-A-1)
+  s2  (tap-hold 200 A-2 C-A-2)
+  s3  (tap-hold 200 A-3 C-A-3)
+  s4  (tap-hold 200 A-4 C-A-4)
+  s5  (tap-hold 200 A-5 C-A-5)
+  s6  (tap-hold 200 A-6 C-A-6)
+  al  (tap-hold 200 A-0 C-A-0)
 
 #| move tags |#
   5 A-S-5
@@ -86,32 +86,32 @@
 
 
 #| Tap Keys |#
-  ;;tlr (tap-hold 300 tab @fn)
-  eat (tap-hold 300 esc lalt)
-  ttm (tap-hold 300 bspc @tm)
-  die (tap-hold 300 @qt @qqt)
-  ;;sly (tap-hold 300 @tmn @ent)
-  dun (tap-hold 300 @dps @drsm)
-  dmg (tap-hold 300 C-spc @dcl)
-  sch (tap-hold 300 f @sea)
-  pass (tap-hold 300 p @pss)
-  mov (tap-hold 300 a lalt)
-  stl (tap-hold 300 s lctl)
+  ;;tlr (tap-hold 200 tab @fn)
+  eat (tap-hold 200 esc lalt)
+  ttm (tap-hold 200 bspc @tm)
+  die (tap-hold 200 @qt @qqt)
+  ;;sly (tap-hold 200 @tmn @ent)
+  dun (tap-hold 200 @dps @drsm)
+  dmg (tap-hold 200 C-spc @dcl)
+  sch (tap-hold 200 f @sea)
+  pass (tap-hold 200 p @pss)
+  mov (tap-hold 200 a lalt)
+  stl (tap-hold 200 s lctl)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ktl (tap-hold 200 k lctl)
   jft (tap-hold 200 j lsft)
   fft (tap-hold 200 f lsft)
   lat (tap-hold 200 l lalt)
   dmt (tap-hold 200 d lmet)
-  smt (tap-hold 200 ' lmet)
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  efn (tap-hold 300 e @fn)
-  dhp (tap-hold 300 i @hist)
-  dtx (tap-hold 300 o @ctx)
-  z (tap-hold 300 z A-S)
-  x (tap-hold 300 x @sp)
-  sly (tap-hold 300 spc @sp)
-  enty (tap-hold 300 ' @ent)
+  smt (tap-hold 200 ; @ent)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+  efn (tap-hold 200 e @fn)
+  dhp (tap-hold 200 i @hist)
+  dtx (tap-hold 200 o @ctx)
+  z (tap-hold 200 z A-S)
+  x (tap-hold 200 x @sp)
+  sly (tap-hold 200 spc @sp)
+  enty (tap-hold 200 ' @ent)
   )
 
 #|
@@ -119,7 +119,7 @@
     KC_BSPC,  KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
     KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
-                                  KC_LALT,   KC_LGUI, KC_LCTRL,            KC_SPC,   KC_TAB,   KC_RGUI
+                                  KC_LALT,  KC_LCTRL   KC_LGUI,            KC_SPC,   KC_ENT,   KC_0,
   ),
 |#
 
@@ -129,22 +129,22 @@
   bspc  q    w    e    r    t          y    u    i    o    p   \
   esc   a    s    d    f    g          h    j    k    l    ;    '
   lsft  z    x    c    v    b          n    m    ,    .    /    rsft
-                lalt lctl   lmet       spc  tab rmet
+                lalt lctl   lmet       spc  ent 0
 )
 
   #|----------------------------base------------------------------------------- |#
 
 (deflayer base
-  @ttm q    w   @efn  r    t           y    u    i    o     p   @nm
-  esc  @mov @stl @dmt @fft g           h    @jft @ktl @lat  ;   @enty
+  @ttm q    w   @efn  r    t           y    u    i    o    p   @nm
+  esc  @mov @stl @dmt @fft  g           h   @jft @ktl @lat @smt   @enty
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
-             lalt lctl  lmet           @sly tab  rmet
+             lalt lctl  lmet           @sly   |    rmet
 )
 
   #|----------------------------numLayer----------------------------------------|#
 
 (deflayer numLayer
-  @die  @ktf  w   @cl  @hist t          $    7    8    9   @pss  \
+  @dmg  @ktf  w   @cl  @hist t          $    7    8    9   @pss  \
   @mo    a    s    d   @sea  ~          =    4    5    6    ;    '
   lsft   z   @dmg @ctx  v    b          0    1    2    3    /    rsft
                  lalt lctl spc          tab @drsm rmet
@@ -154,9 +154,9 @@
 
 (deflayer enterLayer
   @fl    q    w   \(   \)   t              y   +    -   \_    p    \
-  @tl    a    s    [    ]   ~              @lf @dw  @up  @rg  `    '
+  @tl    bspc lctl [    ]   ~              @lf @dw  @up  @rg  `    '
   lsft   z    x    <    >   b              n   F1    ,    .    |    rsft
-                lalt lctl spc              ret ralt @dps
+                lalt lctl spc              ret tab @dps
 )
 
   #|----------------------------functionLayer----------------------------------- |#
@@ -172,7 +172,7 @@
 
 (deflayer spaceLayer
   tab  q    w    e     r   @tl              y   M-F7  i    o    p    \
-  caps a    s    d     @fl g                h   @s4   @s5  @al  :    `
+  caps a    s    d     @fl g                h   @s4   @s5  tab  ret    `
   lsft z    x    @ctm  v   b                @al @s1   @s2  @s3  \    rsft
                lalt lctl spc                ret ralt rmet
 )
@@ -181,7 +181,7 @@
 
 (deflayer hypLayer
   @dmg  q   @wall  e  @drsm  t              y   @bku @bkd  d   @ptok \
-  caps @aws @stok @db @cfnd g              h    j   @5    l    ;    '
+  caps @die @stok @db @cfnd g              h    @hist  @ctx    l    ;    '
   lsft z    @kill @pic v    b              n   @man   ,    .   /    @hyp
                 @drsm @dps @ctx              @hist @dps  @ctx
 )
