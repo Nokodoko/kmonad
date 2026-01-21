@@ -1,3 +1,4 @@
+
 (defcfg
   input (device-file "/dev/input/by-id/usb-foostan_Corne-event-kbd")
   output (uinput-sink "Onboard")
@@ -32,8 +33,8 @@
   tm M-S-ret       #|  terminal   |#
   sea M-spc        #|  launcher   |#
 
-#| Wezterm |#
-  cs (tap-macro C-spc)
+#| Kitty |#
+  cs C-S
   tmn C-S-ret
 
 
@@ -49,7 +50,7 @@
   stok M-C-s
   pic M-C-c
   wall M-C-w
-  hist A-C-KeyDown
+  hist M-C-KeyDown
   man M-C-m
   ctx M-C-KeyRight
   kill M-S-x
@@ -58,7 +59,7 @@
   dcl C-S-spc
   dps M-F10       #| dunst pause |#
   drsm M-S-C-F10  #|dunst resume |#
-  pss M-S-p
+  pss C-M-p
   db M-C-d
 
 #| WORKSPACES |#
@@ -153,7 +154,7 @@ lfb A-S-l #|lf in xwindow|#
   @ttm q    w   @efn  r    t           y    u    i    o    p   @nm
   esc  @mov @stl @dmt @fft  g           h   @jft @ktl @lat @smt   @enty
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
-             lalt lmet @cs             @sly   |    rmet
+             lalt lctl  lmet           @sly   |    rmet
 )
 
   #|----------------------------numLayer----------------------------------------|#

@@ -55,37 +55,37 @@ f4 C-M-4 #| other |#
   dwn KeyPageDown
 
 #| Scripts |#
-  aws  M-C-a
-  ptok M-C-p
-  stok M-C-s
+  aws  A-C-a
+  ptok A-C-p
+  stok A-C-s
   hist A-C-KeyDown
-  man M-C-m
-  ctx M-C-KeyRight
-  pic M-C-c
-  wall M-C-w
-  kill M-S-x
-  spll M-C-KeyLeft
-  cfnd M-C-f
+  man A-C-m
+  ctx A-C-KeyRight
+  pic A-C-c
+  wall A-C-w
+  kill M-x
+  spll A-C-KeyLeft
+  cfnd A-C-f
   dcl C-S-spc
-  dps M-F10       #| dunst pause |#
-  drsm M-S-C-F10  #|dunst resume |# 
-  pss M-S-p
+  dps A-F10       #| dunst pause |#
+  drsm A-S-C-F10  #|dunst resume |# 
+  pss C-M-p
   upd C-M-u
   xm5 C-M-i
   drs C-M-y
-  bup M-C-b
-  bdwn M-C-e
+  bup A-C-b
+  bdwn A-C-e
 
 #| WORKSPACES |#
-  s1  (tap-hold 200 M-1 C-M-1)
-  s2  (tap-hold 200 M-2 C-M-2)
-  s3  (tap-hold 200 M-3 C-M-3)
-  s4  (tap-hold 200 M-4 C-M-4)
-  s5  (tap-hold 200 M-5 C-M-5)
-  s6  (tap-hold 200 M-6 C-M-6)
-  s7  (tap-hold 200 M-7 C-M-7)
-  s8  (tap-hold 200 M-8 C-M-8)
-  al  (tap-hold 200 M-0 C-M-0)
+  s1  (tap-hold 200 A-1 C-A-1)
+  s2  (tap-hold 200 A-2 C-A-2)
+  s3  (tap-hold 200 A-3 C-A-3)
+  s4  (tap-hold 200 A-4 C-A-4)
+  s5  (tap-hold 200 A-5 C-A-5)
+  s6  (tap-hold 200 A-6 C-A-6)
+  s7  (tap-hold 200 A-7 C-A-7)
+  s8  (tap-hold 200 A-8 C-A-8)
+  al  (tap-hold 200 A-0 C-A-0)
 
 #| move tags |#
   5 A-S-5
@@ -95,11 +95,11 @@ f4 C-M-4 #| other |#
   m2 M-F8
 
  #| LAYOUTS |#
- tl  M-S-t    #|       tiled     |#
- ct  M-S-c    #|     centered    |#
- ctm M-S-c    #|  center master  |#
- fl  M-S-f    #|    fullscreen   |#
- cl  M-S-e    #|    close xorg   |#
+ tl  A-S-t    #|       tiled     |#
+ ct  A-S-c    #|     centered    |#
+ ctm A-S-c    #|  center master  |#
+ fl  A-S-f    #|    fullscreen   |#
+ cl  A-S-e    #|    close xorg   |#
 
 
 #| BROWSER |#

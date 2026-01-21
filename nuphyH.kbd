@@ -18,7 +18,7 @@
   mo M-o       #|  kill Trakpad       |#
   sd M-C-s     #|    Shutdown         |#
   sspend M-C-S #|    Suspend          |#
-  kto M-S-7    #| onboard keyboard on |#           
+  kto M-S-7    #| onboard keyboard on |#
   bku C-A-u
   bkd C-A-i
 
@@ -27,6 +27,9 @@ f1 C-M-1 #| speed |#
 f2 C-M-2 #| move  |#
 f3 C-M-3 #| mifi  |#
 f4 C-M-4 #| other |#
+
+vt C-A-t #| vivaldi tile |#
+vh C-A-z #| vivaldi tile horizontal |#
 
 #| PROGRAMS |#
   qu M-F1       #| qutebrowser |#
@@ -65,19 +68,21 @@ f4 C-M-4 #| other |#
   dcl C-S-spc
   dps A-F10       #| dunst pause |#
   drsm A-S-C-F10  #|dunst resume |# 
-  pss C-M-p
+  pss M-S-p
   upd C-M-u
   xm5 C-M-i
   drs C-M-y
 
 #| WORKSPACES |#
-  s1  (tap-hold 200 A-1 C-A-1)
-  s2  (tap-hold 200 A-2 C-A-2)
-  s3  (tap-hold 200 A-3 C-A-3)
-  s4  (tap-hold 200 A-4 C-A-4)
-  s5  (tap-hold 200 A-5 C-A-5)
-  s6  (tap-hold 200 A-6 C-A-6)
-  al  (tap-hold 200 A-0 C-A-0)
+  s1  (tap-hold 200 M-1 C-M-1)
+  s2  (tap-hold 200 M-2 C-M-2)
+  s3  (tap-hold 200 M-3 C-M-3)
+  s4  (tap-hold 200 M-4 C-M-4)
+  s5  (tap-hold 200 M-5 C-M-5)
+  s6  (tap-hold 200 M-6 C-M-6)
+  s7  (tap-hold 200 M-7 C-M-7)
+  s8  (tap-hold 200 M-8 C-M-8)
+  al  (tap-hold 200 M-0 C-M-0)
 
 #| move tags |#
   5 A-S-5
@@ -87,11 +92,11 @@ f4 C-M-4 #| other |#
   m2 M-F8
 
  #| LAYOUTS |#
- tl  A-S-t    #|       tiled     |#
- ct  A-S-c    #|     centered    |#
- ctm A-S-c  #|  center master  |#
- fl  A-S-f  #|    fullscreen   |#
- cl  A-S-e  #|    close xorg   |#
+ tl  M-S-t    #|       tiled     |#
+ ct  M-S-c    #|     centered    |#
+ ctm M-S-c  #|  center master  |#
+ fl  M-S-f  #|    fullscreen   |#
+ cl  M-S-e  #|    close xorg   |#
 
 
 
@@ -187,7 +192,7 @@ f4 C-M-4 #| other |#
 (deflayer spaceLayer
   @sus F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   @sus @bkd @bku @drs    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r   @tl   y   M-F7  i    o   @al   [    ]    \
+  tab  q    w    e    r   @tl   y    @s7 @s8    o   @al   [    ]    \
   caps @die lsft esc  @ssft  g    h  @s4  @s5  tab   ret   `    ret
   lsft z    x   @ctm  v    b    n  @s1  @s2  @s3    \    rsft
   lmet lalt @tmnt           ret            ralt rmet KeyLeft KeyDown @xm5
@@ -198,9 +203,8 @@ f4 C-M-4 #| other |#
 (deflayer hypLayer
   esc F1  F2   F3   F4   F5   F6   F7   F8   F9  F10  F11  F12 
   grv  1    2    3    4    5    6    7    8    9    0    -    =    @cl
-  tab  q   @wall e    r    t    y   @bku @bkd  o   @ptok [    ]    \
+  tab  q   @wall e    r  @vt    y   @bku @bkd  o   @ptok [    ]    \
   caps @aws @stok d  @cfnd g    h    j   @kto  l    ;    '    ret
-  lsft z   @kill @pic v    b    n   @man   ,    .    /    @hyp
+  lsft @vh @kill @pic v    b    n   @man   ,    .    /    @hyp
   lctl lmet lalt           @dun            ralt rctl  @drsm KeyDown KeyRight
 )
-

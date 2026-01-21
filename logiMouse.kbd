@@ -1,3 +1,4 @@
+
 (defcfg
   input (device-file "/dev/input/by-id/usb-foostan_Corne-event-kbd")
   output (uinput-sink "Onboard")
@@ -24,16 +25,17 @@
   xm5 C-A-y
 
 #| PROGRAMS |#
-  qu M-F1          #| qutebrowser |#
-  ch M-F3          #|    Chrome   |#
-  sl M-F4          #|    Slack    |#
-  mg M-a           #| andmessages |#
-  rf M-KeyRight    #| launcher    |#
-  tm M-S-ret       #|  terminal   |#
-  sea M-spc        #|  launcher   |#
+  qu M-F1        #| qutebrowser |#
+  LF M-F2        #|    LF       |#
+  ch M-F3        #|    Chrome   |#
+  sl M-F4        #|    Slack    |#
+  mg M-a         #| andmessages |#
+  rf M-KeyRight  #| launcher    |#
+  tm M-ret       #|  terminal   |#
+  sea M-spc      #|  launcher   |#
 
-#| Wezterm |#
-  cs (tap-macro C-spc)
+#| Kitty |#
+  cs C-S
   tmn C-S-ret
 
 
@@ -44,33 +46,31 @@
   up  KeyUp
 
 #| Scripts |#
-  aws  M-C-a
-  ptok M-C-p
-  stok M-C-s
-  pic M-C-c
-  wall M-C-w
+  aws  A-C-a
+  ptok A-C-p
+  stok A-C-s
+  pic A-C-c
+  wall A-C-w
   hist A-C-KeyDown
-  man M-C-m
-  ctx M-C-KeyRight
-  kill M-S-x
-  spll M-C-KeyLeft
-  cfnd M-C-f
+  man A-C-m
+  ctx A-C-KeyRight
+  kill A-C-x
+  spll A-C-KeyLeft
+  cfnd A-C-f
   dcl C-S-spc
-  dps M-F10       #| dunst pause |#
-  drsm M-S-C-F10  #|dunst resume |#
-  pss M-S-p
-  db M-C-d
+  dps A-F10       #| dunst pause |#
+  drsm A-S-C-F10  #|dunst resume |#
+  pss C-M-p
+  db A-C-d
 
 #| WORKSPACES |#
-  s1  (tap-hold 200 M-1 C-M-1)
-  s2  (tap-hold 200 M-2 C-M-2)
-  s3  (tap-hold 200 M-3 C-M-3)
-  s4  (tap-hold 200 M-4 C-M-4)
-  s5  (tap-hold 200 M-5 C-M-5)
-  s6  (tap-hold 200 M-6 C-M-6)
-  s7  (tap-hold 200 M-7 C-M-7)
-  s8  (tap-hold 200 M-8 C-M-8)
-  al  (tap-hold 200 M-0 C-M-0)
+  s1  (tap-hold 200 A-1 C-A-1)
+  s2  (tap-hold 200 A-2 C-A-2)
+  s3  (tap-hold 200 A-3 C-A-3)
+  s4  (tap-hold 200 A-4 C-A-4)
+  s5  (tap-hold 200 A-5 C-A-5)
+  s6  (tap-hold 200 A-6 C-A-6)
+  al  (tap-hold 200 A-0 C-A-0)
 
 #| move tags |#
   5 A-S-5
@@ -80,25 +80,18 @@
   pls2 M-F6
   pls15 M-F8
 
-#| PROGRAMS |#
-calr A-S-c #|calcurse|#
-lfb A-S-l #|lf in xwindow|#
-
  #| LAYOUTS |#
- tl  M-t    #|       tiled     |#
- ct  M-c    #|     centered    |#
- ctm M-S-c  #|  center master  |#
- fl  M-f  #|    fullscreen   |#
- cl  M-S-e  #|    close xorg   |#
+ tl  A-S-t    #|       tiled     |#
+ ct  A-c    #|     centered    |#
+ ctm A-S-c  #|  center master  |#
+ fl  A-S-f  #|    fullscreen   |#
+ cl  A-S-e  #|    close xorg   |#
 
 #| BROWSER |#
- cal  C-A-KeyLeft   #|    select tab          |#
- car  C-A-KeyRight  #|    select tab          |#
- cat  C-A-t         #|    tile tab verticle   |#
- cah  A-z           #|    tile tab horizontal |#
- cag  C-A-g         #|    tile tab grid       |#
- caz  C-S-z         #|    untile tab          |#
- quk  C-A-S-space   #|    quick commands      |#
+ cal  C-A-KeyLeft   #|    select tab        |#
+ car  C-A-KeyRight  #|    select tab        |#
+ cat  C-A-t         #|    tile tab verticle |#
+ cah  A-z         #|    tile tab horizontal |#
 
 #| Tap Keys |#
   ;;tlr (tap-hold 200 tab @fn)
@@ -130,7 +123,7 @@ lfb A-S-l #|lf in xwindow|#
   )
 
 #|
-  [_BASE] = LAYOUT_reviung41(FN
+  [_BASE] = LAYOUT_reviung41(
     KC_BSPC,  KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
     KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
@@ -153,7 +146,7 @@ lfb A-S-l #|lf in xwindow|#
   @ttm q    w   @efn  r    t           y    u    i    o    p   @nm
   esc  @mov @stl @dmt @fft  g           h   @jft @ktl @lat @smt   @enty
   lsft z    x    c    v    b           n    m    ,    .    /    @hyp
-             lalt lmet @cs             @sly   |    rmet
+             lalt lctl  lmet           @sly   |    rmet
 )
 
   #|----------------------------numLayer----------------------------------------|#
@@ -186,19 +179,19 @@ lfb A-S-l #|lf in xwindow|#
   #|----------------------------spaceLayer-------------------------------------- |#
 
 (deflayer spaceLayer
-  tab  q    w    e     r   @tl              y    @s7 @s8    o    p    \
-  esc  a     s    d     @fl g                h   @s4   @s5  tab  ret    `
-  lsft @caz x    @ctm  v   b                @al @s1   @s2  @s3  \    rsft
+  tab  q    w    e     r   @tl              y   M-F7  i    o    p    \
+  esc a    s    d     @fl g                h   @s4   @s5  tab  ret    `
+  lsft z    x    @ctm  v   b                @al @s1   @s2  @s3  \    rsft
                lalt lctl spc                ret ralt rmet
 )
 
   #|-------------------------hypLayer---------------------------------------- |#
 
 (deflayer hypLayer
-  @dmg  q   @wall  @lfb  @drsm  @cat          @xm5    @bku @bkd  d   @ptok \
-  @win @die @stok @db @cfnd @cag           @cal    @hist  @ctx    @car    ;    '
-  lsft @cah @kill @calr v    b              n   @man   ,    .   /    @hyp
-                @drsm @dps @ctx              @quk @dps  @ctx
+  @dmg  q   @wall  e  @drsm  @cat          @xm5    @bku @bkd  d   @ptok \
+  @win @die @stok @db @cfnd g              @cal    @hist  @ctx    @car    ;    '
+  lsft @cah @kill @pic v    b              n   @man   ,    .   /    @hyp
+                @drsm @dps @ctx              @hist @dps  @ctx
 )
 
   #|-------------------------winLayer---------------------------------------- |#
